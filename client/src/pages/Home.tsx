@@ -14,12 +14,12 @@ const IMG = {
   section4: "https://d2xsxph8kpxj0f.cloudfront.net/310519663647996789/PTDt7U4WBXkpSwNXbuyH94/v4-section4-cXAmshZ4vTfKsAsoSuUhWB.webp",
   pricing:  "https://d2xsxph8kpxj0f.cloudfront.net/310519663647996789/PTDt7U4WBXkpSwNXbuyH94/v4-pricing-PdMT3RbpVg4Evp6HhhGZ2e.webp",
   // 실제 리포트 스크린샷
-  reportSajuTable: "/manus-storage/report-saju-table_a99b74ad.png",
-  reportOhang:     "/manus-storage/report-ohang_9d4ce3c0.png",
-  reportSipsin:    "/manus-storage/report-sipsin_47cdd309.png",
+  reportSajuTable: "/images/report-saju-table.png",
+  reportOhang:     "/images/report-ohang.png",
+  reportSipsin:    "/images/report-sipsin.png",
   // 기존 샘플
-  sampleCover:    "/manus-storage/myeongeon-sample-cover_c4406aa1.png",
-  sampleToc:      "/manus-storage/myeongeon-sample-toc_72334608.png",
+  sampleCover:    "/images/myeongeon-sample-cover.png",
+  sampleToc:      "/images/myeongeon-sample-toc.png",
 };
 
 function useFadeIn() {
