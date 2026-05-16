@@ -288,10 +288,8 @@ function Footer() {
       </div>
       <div style={{ height: 1, background: "linear-gradient(90deg,transparent,rgba(184,134,11,0.4),transparent)", marginBottom: "1.2rem" }} />
       <div style={{ ...S.sans, fontSize: "clamp(0.62rem, 2.5vw, 0.7rem)", color: "#8a8278", lineHeight: 2.1, textAlign: "center" }}>
-        <p>상호: 명언사주 &nbsp;|&nbsp; 대표자: 홍길동</p>
-        <p>사업자등록번호: 000-00-00000</p>
-        <p>고객센터: 010-0000-0000</p>
-        <p>이메일: contact@myeongeonsaju.com</p>
+        <p>상호: 에스랩 &nbsp;|&nbsp; 대표자: 김가별</p>
+        <p>사업자등록번호: 196-19-01302</p>
       </div>
       <div style={{ height: 1, background: "linear-gradient(90deg,transparent,rgba(184,134,11,0.4),transparent)", margin: "1.2rem 0" }} />
       <p style={{ ...S.sans, fontSize: "clamp(0.6rem, 2.4vw, 0.68rem)", color: "#8a8278", textAlign: "center", lineHeight: 1.7 }}>

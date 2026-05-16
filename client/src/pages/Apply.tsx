@@ -151,35 +151,119 @@ export default function Apply() {
     }
   }
 
+  // 계좌번호 복사
+  const ACCOUNT_NUMBER = "3333-26-3204251";
+  const [copied, setCopied] = useState(false);
+  function copyAccount() {
+    navigator.clipboard.writeText(ACCOUNT_NUMBER).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    });
+  }
+
   // 완료 화면
   if (submitted) {
     return (
       <div style={{ background: S.hanji, minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "2rem 1.25rem" }}>
         <div style={{ maxWidth: 420, width: "100%", textAlign: "center" }}>
-          <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>✦</div>
-          <h1 style={{ ...S.serif, fontSize: "1.6rem", fontWeight: 900, color: S.ink, marginBottom: "0.8rem", lineHeight: 1.4 }}>
+          {/* 체크 아이콘 */}
+          <div style={{
+            width: 64, height: 64, borderRadius: "50%",
+            background: "linear-gradient(135deg, #8b6508, #c9a84c)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            margin: "0 auto 1.2rem",
+            fontSize: "1.8rem",
+          }}>✦</div>
+
+          <h1 style={{ ...S.serif, fontSize: "1.6rem", fontWeight: 900, color: S.ink, marginBottom: "0.6rem", lineHeight: 1.4 }}>
             신청이 완료되었습니다
           </h1>
-          <p style={{ ...S.sans, fontSize: "0.9rem", color: S.muted, lineHeight: 1.8, marginBottom: "2rem" }}>
+          <p style={{ ...S.sans, fontSize: "0.88rem", color: S.muted, lineHeight: 1.8, marginBottom: "1.8rem" }}>
             <strong style={{ color: S.ink }}>{name}</strong> 님의 신청을 접수했습니다.<br />
             입금 확인 후 <strong style={{ color: S.gold }}>24시간 이내</strong>에<br />
-            이메일(<strong>{email}</strong>)로 리포트를 발송해드립니다.
+            <strong style={{ color: S.ink }}>{email}</strong>로 리포트를 발송해드립니다.
           </p>
+
+          {/* 입금 안내 카드 */}
           <div style={{
             background: "#faf7f0",
-            border: "1px solid rgba(184,134,11,0.3)",
-            borderRadius: 4,
-            padding: "1.2rem",
-            marginBottom: "2rem",
+            border: "1px solid rgba(184,134,11,0.35)",
+            borderRadius: 6,
+            padding: "1.4rem 1.2rem",
+            marginBottom: "1.5rem",
             textAlign: "left",
           }}>
-            <p style={{ ...S.serif, fontSize: "0.8rem", fontWeight: 700, color: S.gold, marginBottom: "0.6rem" }}>입금 안내</p>
-            <p style={{ ...S.sans, fontSize: "0.82rem", color: S.ink, lineHeight: 1.9 }}>
-              상품: {selectedProduct.name}<br />
-              금액: {selectedProduct.price}<br />
-              계좌: 은행명 000-0000-0000 (예금주: 명언사주)
+            <p style={{ ...S.serif, fontSize: "0.78rem", fontWeight: 700, color: S.gold, marginBottom: "1rem", letterSpacing: "0.06em" }}>
+              편의 입금 안내
             </p>
+
+            {/* 상품 / 금액 */}
+            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.5rem" }}>
+              <span style={{ ...S.sans, fontSize: "0.8rem", color: S.muted }}>상품</span>
+              <span style={{ ...S.serif, fontSize: "0.82rem", fontWeight: 700, color: S.ink }}>{selectedProduct.name}</span>
+            </div>
+            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "1rem" }}>
+              <span style={{ ...S.sans, fontSize: "0.8rem", color: S.muted }}>입금 금액</span>
+              <span style={{ ...S.serif, fontSize: "1rem", fontWeight: 900, color: S.gold }}>{selectedProduct.price}</span>
+            </div>
+
+            {/* 구분선 */}
+            <div style={{ height: 1, background: "rgba(184,134,11,0.2)", marginBottom: "1rem" }} />
+
+            {/* 계좌 정보 */}
+            <div style={{ marginBottom: "0.4rem" }}>
+              <span style={{ ...S.sans, fontSize: "0.72rem", color: S.muted }}>은행</span>
+              <span style={{ ...S.serif, fontSize: "0.85rem", fontWeight: 700, color: S.ink, marginLeft: "0.5rem" }}>카카오뱅크</span>
+            </div>
+            <div style={{ marginBottom: "0.4rem" }}>
+              <span style={{ ...S.sans, fontSize: "0.72rem", color: S.muted }}>예금주</span>
+              <span style={{ ...S.serif, fontSize: "0.85rem", fontWeight: 700, color: S.ink, marginLeft: "0.5rem" }}>에스랩</span>
+            </div>
+
+            {/* 계좌번호 + 복사 버튼 */}
+            <div style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              background: copied ? "rgba(184,134,11,0.1)" : "rgba(250,247,240,1)",
+              border: `1px solid ${copied ? "#b8860b" : "rgba(184,134,11,0.3)"}`,
+              borderRadius: 4,
+              padding: "0.7rem 0.9rem",
+              marginTop: "0.8rem",
+              transition: "all 0.2s ease",
+            }}>
+              <span style={{ ...S.serif, fontSize: "1.05rem", fontWeight: 700, color: S.ink, letterSpacing: "0.04em" }}>
+                {ACCOUNT_NUMBER}
+              </span>
+              <button
+                onClick={copyAccount}
+                style={{
+                  ...S.sans,
+                  background: copied
+                    ? "#b8860b"
+                    : "linear-gradient(135deg, #8b6508, #c9a84c)",
+                  border: "none",
+                  borderRadius: 3,
+                  padding: "0.4rem 0.8rem",
+                  fontSize: "0.75rem",
+                  fontWeight: 700,
+                  color: "#1e1a14",
+                  cursor: "pointer",
+                  flexShrink: 0,
+                  transition: "all 0.2s ease",
+                  letterSpacing: "0.02em",
+                }}
+              >
+                {copied ? "✓ 복사됨" : "계좌복사"}
+              </button>
+            </div>
           </div>
+
+          <p style={{ ...S.sans, fontSize: "0.72rem", color: "#8a8278", marginBottom: "1.5rem", lineHeight: 1.7 }}>
+            입금자명은 다를 수 있습니다.<br />
+            입금 후 이메일이 오지 않으면 스팸 폴더를 확인해주세요.
+          </p>
+
           <button
             onClick={() => navigate("/")}
             style={{
