@@ -6,17 +6,20 @@
 
 import { useEffect, useRef } from "react";
 
-// 새로 생성된 이미지 (텍스트 합성 포함)
+// 이미지 URL
 const IMG = {
   hero:     "https://d2xsxph8kpxj0f.cloudfront.net/310519663647996789/PTDt7U4WBXkpSwNXbuyH94/v2-hero-dtDz2vLJQX3dLo4wt59wTX.webp",
   section2: "https://d2xsxph8kpxj0f.cloudfront.net/310519663647996789/PTDt7U4WBXkpSwNXbuyH94/v2-section2-dfTMdSQkni6zXYdubZLvLQ.webp",
-  section3: "/manus-storage/myeongeon-section3_afdf8dcd.png",
-  section4: "https://d2xsxph8kpxj0f.cloudfront.net/310519663647996789/PTDt7U4WBXkpSwNXbuyH94/v2-section4-Y5kYzcu9yrtYMRFqLguShc.webp",
-  pricing:  "https://d2xsxph8kpxj0f.cloudfront.net/310519663647996789/PTDt7U4WBXkpSwNXbuyH94/v2-pricing-AZhJEGziZGx2u8mn2qfZt2.webp",
+  section3: "https://d2xsxph8kpxj0f.cloudfront.net/310519663647996789/PTDt7U4WBXkpSwNXbuyH94/v3-section3-8wX5NLhfJMVHFEsRnWVzkJ.webp",
+  section4: "https://d2xsxph8kpxj0f.cloudfront.net/310519663647996789/PTDt7U4WBXkpSwNXbuyH94/v4-section4-cXAmshZ4vTfKsAsoSuUhWB.webp",
+  pricing:  "https://d2xsxph8kpxj0f.cloudfront.net/310519663647996789/PTDt7U4WBXkpSwNXbuyH94/v4-pricing-PdMT3RbpVg4Evp6HhhGZ2e.webp",
+  // 실제 리포트 스크린샷
+  reportSajuTable: "/manus-storage/report-saju-table_a99b74ad.png",
+  reportOhang:     "/manus-storage/report-ohang_9d4ce3c0.png",
+  reportSipsin:    "/manus-storage/report-sipsin_47cdd309.png",
+  // 기존 샘플
   sampleCover:    "/manus-storage/myeongeon-sample-cover_c4406aa1.png",
   sampleToc:      "/manus-storage/myeongeon-sample-toc_72334608.png",
-  sampleSaju:     "/manus-storage/myeongeon-sample-saju_1f728795.png",
-  sampleAnalysis: "/manus-storage/myeongeon-sample-analysis_41283f5a.png",
 };
 
 function useFadeIn() {
@@ -111,7 +114,7 @@ function ReportSection() {
     <section ref={ref} className="fade-in-up" style={{ maxWidth: 480, margin: "0 auto" }}>
       <img
         src={IMG.section4}
-        alt="단순 풀이가 아닙니다 — 80~100페이지 프리미엄 사주 리포트"
+        alt="단순 풀이가 아닙니다 — 120페이지 이상 프리미엄 사주 리포트"
         style={{ width: "100%", display: "block" }}
       />
     </section>
@@ -122,10 +125,31 @@ function ReportSection() {
 function SampleSection() {
   const ref = useFadeIn();
   const samples = [
-    { img: IMG.sampleCover,    label: "표지",              desc: "한 권의 책처럼 정중하게 시작합니다" },
-    { img: IMG.sampleToc,      label: "목차 — 10장 구성",  desc: "사주팔자·황금기·연애·재물·직업·건강·귀인·운명·월별운세·10년 분석" },
-    { img: IMG.sampleSaju,     label: "사주팔자 명식",     desc: "천간·지지·음양오행·십성·지장간을 한눈에 풀이합니다" },
-    { img: IMG.sampleAnalysis, label: "오행 분포와 본문 풀이", desc: "차트와 함께 자주 마주치는 인생의 장면을 풀어냅니다" },
+    {
+      img: IMG.sampleCover,
+      label: "표지",
+      desc: "한 권의 책체럼 정중하게 시작합니다",
+    },
+    {
+      img: IMG.sampleToc,
+      label: "목차",
+      desc: "사주팔자 상세분석·황금기·연애운·재물운·직업·건강·귀인·운명·월별운세·10년 분석까지",
+    },
+    {
+      img: IMG.reportSajuTable,
+      label: "사주팔자 명식 및 용신분석",
+      desc: "천간·지지·십성·신살을 한눈에, 오행의 조화와 용신을 상세히 풀이합니다",
+    },
+    {
+      img: IMG.reportOhang,
+      label: "음양오행 분석",
+      desc: "나를 구성하는 에너지의 균형을 차트와 함께 시각적으로 풀어냕니다",
+    },
+    {
+      img: IMG.reportSipsin,
+      label: "십신(十神) 분포",
+      desc: "타고난 기질의 강약을 비견·식상·재성·관성·인성 5가지 카테고리로 정리합니다",
+    },
   ];
   return (
     <section style={{ background: S.hanji, padding: "3rem 0", maxWidth: 480, margin: "0 auto" }}>
@@ -137,24 +161,38 @@ function SampleSection() {
           <h2 style={{ ...S.serif, fontSize: "clamp(1.3rem, 6vw, 1.6rem)", fontWeight: 900, color: S.ink, textAlign: "center", lineHeight: 1.4, marginBottom: "0.5rem" }}>
             실제 리포트는<br />이런 모습입니다
           </h2>
-          <p style={{ ...S.sans, fontSize: "clamp(0.75rem, 3.2vw, 0.85rem)", color: S.muted, textAlign: "center", lineHeight: 1.7, marginBottom: "2rem" }}>
-            80~100페이지 분량의 정통사주 리포트<br />일부를 미리 만나보세요
+          <p style={{ ...S.sans, fontSize: "clamp(0.78rem, 3.2vw, 0.88rem)", color: S.muted, textAlign: "center", lineHeight: 1.7, marginBottom: "2rem" }}>
+            120페이지 이상 분량의 정통사주 리포트<br />일부를 미리 만나보세요
           </p>
-          <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
             {samples.map((s) => (
               <div key={s.label}>
-                <div style={{ border: "1px solid rgba(184,134,11,0.3)", borderRadius: 4, overflow: "hidden" }}>
-                  <img src={s.img} alt={s.label} style={{ width: "100%", display: "block", maxHeight: 300, objectFit: "cover", objectPosition: "top" }} />
+                <div style={{
+                  border: "1px solid rgba(184,134,11,0.3)",
+                  borderRadius: 4,
+                  overflow: "hidden",
+                  background: "#fff",
+                }}>
+                  {/* 이미지 전체 표시 — 즤리지 않도록 objectFit 제거 */}
+                  <img
+                    src={s.img}
+                    alt={s.label}
+                    style={{ width: "100%", display: "block", height: "auto" }}
+                  />
                 </div>
-                <div style={{ marginTop: "0.6rem" }}>
-                  <p style={{ ...S.serif, fontSize: "clamp(0.85rem, 3.5vw, 0.95rem)", fontWeight: 700, color: S.ink }}>{s.label}</p>
-                  <p style={{ ...S.sans, fontSize: "clamp(0.72rem, 3vw, 0.8rem)", color: S.muted, marginTop: "0.2rem", lineHeight: 1.6 }}>{s.desc}</p>
+                <div style={{ marginTop: "0.7rem" }}>
+                  <p style={{ ...S.serif, fontSize: "clamp(0.9rem, 3.8vw, 1rem)", fontWeight: 700, color: S.ink }}>
+                    {s.label}
+                  </p>
+                  <p style={{ ...S.sans, fontSize: "clamp(0.75rem, 3.1vw, 0.83rem)", color: S.muted, marginTop: "0.25rem", lineHeight: 1.65 }}>
+                    {s.desc}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
           <p style={{ ...S.sans, marginTop: "1.5rem", fontSize: "0.65rem", color: "#8a8278", textAlign: "center" }}>
-            ※ 샘플은 일부 페이지이며, 실제 리포트는 80~100페이지 분량으로 발송됩니다.
+            ※ 샘플은 일부 페이지이며, 실제 리포트는 120페이지 이상 분량으로 발송됩니다.
           </p>
         </div>
       </div>
