@@ -5,11 +5,13 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
+import Apply from "./pages/Apply";
 
 function Router() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
+      <Route path={"/apply"} component={Apply} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
@@ -19,7 +21,6 @@ function Router() {
 function App() {
   return (
     <ErrorBoundary>
-      {/* 명언사주: 밝은 한지 베이지 테마 → light */}
       <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />

@@ -256,35 +256,16 @@ function ReviewSection() {
   );
 }
 
-/** 섹션 7: 상품 선택 — 이미지 전체 + 실제 클릭 버튼 오버레이 */
+/** 섹션 7: 상품 선택 — 이미지 전체 (버튼은 Fixed CTA로 이동) */
 function PricingSection() {
   const ref = useFadeIn();
   return (
-    <section ref={ref} className="fade-in-up" id="apply" style={{ maxWidth: 480, margin: "0 auto", position: "relative" }}>
+    <section ref={ref} className="fade-in-up" id="pricing" style={{ maxWidth: 480, margin: "0 auto" }}>
       <img
         src={IMG.pricing}
         alt="기본 사주 분석 9,900원 / 정통사주 종합분석 29,800원"
         style={{ width: "100%", display: "block" }}
       />
-      {/* 이미지 하단 CTA 버튼 위에 실제 클릭 가능한 링크 */}
-      <div style={{
-        position: "absolute",
-        bottom: "3.5%",
-        left: "50%",
-        transform: "translateX(-50%)",
-        width: "82%",
-      }}>
-        <a
-          href="mailto:contact@myeongeonsaju.com"
-          style={{
-            display: "block",
-            width: "100%",
-            height: "56px",
-            opacity: 0,
-          }}
-          aria-label="지금 신청하기"
-        />
-      </div>
     </section>
   );
 }
@@ -324,10 +305,57 @@ function Footer() {
   );
 }
 
+/** Fixed CTA 버튼 — 항상 하단 고정 */
+function FixedCTA() {
+  return (
+    <div style={{
+      position: "fixed",
+      bottom: 0,
+      left: "50%",
+      transform: "translateX(-50%)",
+      width: "100%",
+      maxWidth: 480,
+      zIndex: 100,
+      padding: "0.75rem 1.25rem",
+      background: "linear-gradient(to top, rgba(245,240,230,0.98) 70%, transparent)",
+      pointerEvents: "none",
+    }}>
+      <a
+        href="/apply"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "0.5rem",
+          width: "100%",
+          padding: "1rem 0",
+          borderRadius: 4,
+          background: "linear-gradient(135deg, #8b6508 0%, #c9a84c 30%, #e8c97a 50%, #c9a84c 70%, #8b6508 100%)",
+          backgroundSize: "200% 200%",
+          animation: "gold-shimmer 4s ease infinite",
+          color: "#1e1a14",
+          fontFamily: "'Noto Serif KR', serif",
+          fontWeight: 700,
+          fontSize: "clamp(1rem, 4.5vw, 1.1rem)",
+          letterSpacing: "0.06em",
+          textDecoration: "none",
+          boxShadow: "0 4px 20px rgba(184,134,11,0.45), 0 2px 8px rgba(0,0,0,0.15)",
+          pointerEvents: "auto",
+          transition: "transform 0.16s cubic-bezier(0.23,1,0.32,1), box-shadow 0.16s ease",
+        }}
+        onMouseEnter={e => (e.currentTarget.style.transform = "translateY(-2px)")}
+        onMouseLeave={e => (e.currentTarget.style.transform = "translateY(0)")}
+      >
+        ✦ 지금 사주 신청하기 →
+      </a>
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <div style={{ background: S.hanji, minHeight: "100vh" }}>
-      <div style={{ maxWidth: 480, margin: "0 auto" }}>
+      <div style={{ maxWidth: 480, margin: "0 auto", paddingBottom: "5rem" }}>
         <HeroSection />
         <ProblemSection />
         <SystemSection />
@@ -337,6 +365,7 @@ export default function Home() {
         <PricingSection />
         <Footer />
       </div>
+      <FixedCTA />
     </div>
   );
 }
