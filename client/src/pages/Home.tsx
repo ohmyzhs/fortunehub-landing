@@ -90,76 +90,16 @@ function ProblemSection() {
   );
 }
 
-/** 섹션 3: 핵심 분석 요소 — 기존 이미지 + HTML 텍스트 오버레이 */
+/** 섹션 3: 핵심 분석 요소 — 텍스트 완전 합성 이미지 */
 function SystemSection() {
   const ref = useFadeIn();
-  const items = [
-    "사주팔자 명식", "음양오행 분석", "십성 풀이",
-    "대운·세운", "직업·재물운", "연애·결혼운",
-    "건강·체질", "인간관계", "현재 시기",
-    "조언·방향", "핵심 요약",
-  ];
   return (
-    <section ref={ref} className="fade-in-up" style={{ maxWidth: 480, margin: "0 auto", position: "relative" }}>
+    <section ref={ref} className="fade-in-up" style={{ maxWidth: 480, margin: "0 auto" }}>
       <img
-        src={IMG.section3}
-        alt="핵심 분석 요소"
+        src="https://d2xsxph8kpxj0f.cloudfront.net/310519663647996789/PTDt7U4WBXkpSwNXbuyH94/v3-section3-8wX5NLhfJMVHFEsRnWVzkJ.webp"
+        alt="핵심 분석 요소 — 사주팔자 명식, 음양오행, 십성 풀이, 대운세운, 직업재물운, 연애결혼운, 건강체질, 인간관계, 현재시기, 조언방향, 핵심요약"
         style={{ width: "100%", display: "block" }}
       />
-      {/* 원형 슬롯 위에 텍스트 배치 — 이미지 비율 941x1672 기준 */}
-      <div style={{
-        position: "absolute",
-        inset: 0,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        // 이미지 상단 약 8%~85% 구간에 콘텐츠 배치
-        paddingTop: "8%",
-        paddingBottom: "15%",
-        paddingLeft: "5%",
-        paddingRight: "5%",
-      }}>
-        {/* 상단 타이틀 */}
-        <div style={{ textAlign: "center", marginBottom: "2.5%" }}>
-          <p style={{ ...S.sans, fontSize: "clamp(0.58rem, 2.3vw, 0.72rem)", color: S.muted, letterSpacing: "0.1em" }}>
-            命言四柱 핵심 분석 시스템
-          </p>
-          <h2 style={{ ...S.serif, fontSize: "clamp(1rem, 4.5vw, 1.3rem)", fontWeight: 900, color: S.ink, marginTop: "0.2rem", lineHeight: 1.3 }}>
-            핵심 분석 요소
-          </h2>
-          <p style={{ ...S.sans, fontSize: "clamp(0.58rem, 2.3vw, 0.7rem)", color: S.muted, marginTop: "0.2rem" }}>
-            정밀한 구조 분석으로 삶의 흐름을 짚어드립니다
-          </p>
-        </div>
-        {/* 11개 항목 그리드 */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gap: "clamp(3px, 1.2vw, 7px)",
-          width: "88%",
-        }}>
-          {items.map((item, i) => (
-            <div key={i} style={{
-              background: "rgba(250,247,240,0.80)",
-              border: "1px solid rgba(184,134,11,0.38)",
-              borderRadius: 3,
-              padding: "clamp(5px, 1.8vw, 9px) clamp(3px, 1vw, 6px)",
-              textAlign: "center",
-            }}>
-              <span style={{
-                ...S.serif,
-                fontSize: "clamp(0.52rem, 2.1vw, 0.66rem)",
-                fontWeight: 700,
-                color: S.ink,
-                display: "block",
-                lineHeight: 1.35,
-              }}>
-                {item}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
     </section>
   );
 }
